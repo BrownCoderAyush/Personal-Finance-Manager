@@ -37,11 +37,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     phonenumber: {
       type: DataTypes.STRING(10),
-      allowNull:false
+      allowNull:false,
+      validate: {
+        len: {
+          args: [10,10],
+          msg: "phone must be 10 digit long"
+        }
+      }
     },
     email: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+      validate : {
+        isEmail : true
+      }
     },
     occupation:{
       type: DataTypes.STRING,

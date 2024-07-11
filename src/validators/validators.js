@@ -38,7 +38,27 @@ const userLogInValidator = (req,res,next)=>{
     } 
 }
 
+const transactionCreateValidator=(req,res,next)=>{
+    try {
+        const payload = req.body;
+        if (
+            payload.amount == null ||
+            payload.date == null ||
+            payload.categoryId == null ||
+            payload.transactionType == null
+        ) {
+            throw new Error("required fields for creating transaction doesn't exist.");
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+
+
+}
+
 module.exports = {
     userSignUpValidator,
-    userLogInValidator
+    userLogInValidator,
+    transactionCreateValidator
 }
