@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "81c916e6-120f-4b3e-ac73-91c4a26539ce",
+		"name": "Personal finance management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16295396",
+		"_collection_link": "https://speeding-trinity-948643.postman.co/workspace/My-Workspace~c751c4e4-40a9-4124-892f-b141e5212b21/collection/16295396-81c916e6-120f-4b3e-ac73-91c4a26539ce?action=share&source=collection_link&creator=16295396"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\":\"testuser3@gmail.com\",\r\n        \"password\":\"password3\",\r\n        \"username\":\"username3\",\r\n        \"firstname\":\"firstname\",\r\n        \"lastname\":\"lastname\",\r\n        \"phonenumber\":\"9950787281\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/users/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"signup"
+							]
+						},
+						"description": "### POST /users/signup\n\nThis endpoint is used to sign up a new user.\n\n#### Request Body\n\n- `email` (text, required): The email of the user.\n    \n- `password` (text, required): The password for the user account.\n    \n- `username` (text, required): The username chosen by the user.\n    \n- `firstname` (text, required): The first name of the user.\n    \n- `lastname` (text, required): The last name of the user.\n    \n- `phonenumber` (text, required): The phone number of the user.\n    \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n    \"success\": true,\n    \"message\": \"Successfully Created a new user\",\n    \"data\": {\n        \"id\": 4,\n        \"firstname\": \"firstname\",\n        \"lastname\": \"lastname\",\n        \"username\": \"username3\",\n        \"password\": \"$2b$10$Q8m0LGkuG.wh4Uy1nuTS/u6dXxwDciZVAMjlveDpoGdBDdsAwqEEm\",\n        \"phonenumber\": \"9950787281\",\n        \"email\": \"testuser3@gmail.com\",\n        \"occupation\": null,\n        \"address\": null\n    },\n    \"status\": 0\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "signIn",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"testuser2@gmail.com\",\r\n    \"password\":\"password2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/users/signIn",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								"signIn"
+							]
+						},
+						"description": "### Sign In User\n\nThis endpoint is used to sign in a user.\n\n#### Request Body\n\n- email (text, required): The email of the user.\n    \n- password (text, required): The password of the user.\n    \n\n#### Response\n\n- Status: 201\n    \n- Content-Type: application/json\n    \n- success (boolean): Indicates if the sign-in was successful.\n    \n- message (string): A message related to the sign-in process.\n    \n- data (various): The data related to the sign-in process.\n    \n- status (integer): The status of the sign-in process.\n    \n\n#### Related Responses\n\nThe responses from other endpoints of this API have similar data models, with success, message, data, and status fields. These responses include data related to user transactions, user details, goals, and more."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "create category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\":\"Party\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"categories"
+							]
+						},
+						"description": "### Add Category\n\nThis endpoint allows the user to add a new category.\n\n#### Request Body\n\n- `type` (string, required): The type of the category to be added.\n    \n\n#### Response\n\n- Status: 201\n    \n- Content-Type: application/json\n    \n- Body:\n    \n    ``` json\n      {\n        \"data\": {\n          \"id\": 0,\n          \"userId\": 0,\n          \"type\": \"\"\n        },\n        \"success\": true,\n        \"message\": \"\",\n        \"status\": 0\n      }\n    \n     ```"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/categories/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"categories",
+								"6"
+							]
+						},
+						"description": "### DELETE /categories/6\n\nDeletes the category with the ID 6.\n\n#### Request Body\n\nThis endpoint does not require a request body.\n\n#### Response\n\nThe response will be in the form of a JSON object with the following properties:\n\n- `data` (boolean): Indicates the success of the operation.\n    \n- `success` (boolean): Indicates if the request was successful.\n    \n- `message` (string): A message related to the request.\n    \n- `status` (integer): The status of the request.\n    \n\nExample:\n\n``` json\n{\n    \"data\": true,\n    \"success\": true,\n    \"message\": \"Successfully deleted a category\",\n    \"status\": 0\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/categories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"categories",
+								"1"
+							]
+						},
+						"description": "# Get Category by ID\n\nThis endpoint retrieves the category with the specified ID.\n\n## Request\n\n### Endpoint\n\n`GET localhost:3001/categories/1`\n\n## Response\n\n- Status: 200 OK\n    \n- Body:\n    \n\n``` json\n{\n    \"data\": {\n        \"id\": 1,\n        \"userId\": 1,\n        \"type\": \"food\"\n    },\n    \"success\": true,\n    \"message\": \"Successfully fetched a category\",\n    \"status\": 0\n}\n\n ```\n\n- Status: 201 Created."
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"categories"
+							]
+						},
+						"description": "# Get Categories\n\nThis endpoint retrieves a list of categories that belongs to the signIn user.\n\nbearer token is given in the authorization header.\n\n## Request\n\n### Endpoint\n\n`GET localhost:3001/categories`\n\n## Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n\n### Response Body\n\n``` json\n{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"userId\": 3,\n            \"type\": \"travel\"\n        },\n        {\n            \"id\": 8,\n            \"userId\": 3,\n            \"type\": \"Party\"\n        }\n    ],\n    \"success\": true,\n    \"message\": \"Successfully fetched all cities\",\n    \"status\": 0\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"amount\" : 5000,\r\n    \"date\" : \"2024-07-11T12:00:00Z\",\r\n    \"categoryId\" : 8,\r\n    \"description\" : \"weekend party\",\r\n    \"transactionType\" : \"+\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/transactions",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"transactions"
+							]
+						},
+						"description": "### POST /transactions\n\nThis endpoint is used to create a new transaction.\n\n#### Request Body\n\n``` json\n{\n    \n    \"amount\" : 5000,\n    \"date\" : \"2024-07-11T12:00:00Z\",\n    \"categoryId\" : 8,\n    \"description\" : \"weekend party\",\n    \"transactionType\" : \"+\"\n}\n\n ```\n\n#### Response\n\nExample Response:\n\n``` json\n{\n    \"data\": {\n        \"id\": 12,\n        \"userId\": 3,\n        \"amount\": 5000,\n        \"date\": \"2024-07-11T12:00:00.000Z\",\n        \"categoryId\": 8,\n        \"description\": \"weekend party\",\n        \"transaction_type\": \"+\"\n    },\n    \"success\": true,\n    \"message\": \"Successfully created a transaction\",\n    \"status\": 0\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaction_type\":\"-\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/transactions",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"transactions"
+							]
+						},
+						"description": "### GET /transactions\n\nThis endpoint retrieves a list of transactions.\n\n#### Request\n\n- Method: GET\n    \n- URL: `localhost:3001/transactions`\n    \n- Request Body:\n    \n    ``` json\n      {\n        \"transaction_type\": \"-\"\n      }\n    \n     ```\n    \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n    \"data\": [\n        {\n            \"id\": 6,\n            \"amount\": 5000,\n            \"date\": \"2024-08-11T12:00:00.000Z\",\n            \"categoryId\": 4,\n            \"transaction_type\": \"-\",\n            \"userId\": 3,\n            \"description\": \"weekend party\"\n        },\n        {\n            \"id\": 7,\n            \"amount\": 5000,\n            \"date\": \"2024-08-11T12:00:00.000Z\",\n            \"categoryId\": 4,\n            \"transaction_type\": \"-\",\n            \"userId\": 3,\n            \"description\": \"weekend party\"\n        }\n    ],\n    \"success\": true,\n    \"message\": \"Successfully fetched all transactions\",\n    \"status\": 0\n}\n- Status: 200 OK\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/transactions/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"transactions",
+								"6"
+							]
+						},
+						"description": "# Get Transaction Details\n\nThis endpoint retrieves the details of a specific transaction by providing the transaction ID in the URL.\n\n## Request\n\n### Endpoint\n\n`GET localhost:3001/transactions/1`\n\n## Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n\n``` json\n{\n    \"data\": {\n        \"id\": 6,\n        \"amount\": 5000,\n        \"date\": \"2024-08-11T12:00:00.000Z\",\n        \"categoryId\": 4,\n        \"transaction_type\": \"-\",\n        \"userId\": 3,\n        \"description\": \"weekend party\"\n    },\n    \"success\": true,\n    \"message\": \"Successfully fetched a transaction\",\n    \"status\": 0\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllbetweendates",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\":\"2024-07-11T12:00:00Z\",\r\n    \"endDate\":\"2024-07-11T12:00:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/transactions/betweendates",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"transactions",
+								"betweendates"
+							]
+						},
+						"description": "# Get Transactions Between Dates\n\nThis endpoint retrieves a list of transactions within the specified date range.\n\n## Request\n\n- Method: GET\n    \n- URL: `localhost:3001/transactions/betweendates`\n    \n- Headers:\n    \n    - Content-Type: application/json\n        \n- Body:\n    \n    - `startDate` (string): The start date for the transaction search.\n        \n    - `endDate` (string): The end date for the transaction search.\n        \n\n## Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- ``` json\n      {\n      \"data\": [\n          {\n              \"id\": 8,\n              \"amount\": 5000,\n              \"date\": \"2024-07-11T12:00:00.000Z\",\n              \"categoryId\": 4,\n              \"transaction_type\": \"+\",\n              \"userId\": 3,\n              \"description\": \"weekend party\"\n          },\n          {\n              \"id\": 9,\n              \"amount\": 5000,\n              \"date\": \"2024-07-11T12:00:00.000Z\",\n              \"categoryId\": 4,\n              \"transaction_type\": \"+\",\n              \"userId\": 3,\n              \"description\": \"weekend party\"\n          },\n          {\n              \"id\": 11,\n              \"amount\": 5000,\n              \"date\": \"2024-07-11T12:00:00.000Z\",\n              \"categoryId\": 8,\n              \"transaction_type\": \"+\",\n              \"userId\": 3,\n              \"description\": \"weekend party\"\n          },\n          {\n              \"id\": 12,\n              \"amount\": 5000,\n              \"date\": \"2024-07-11T12:00:00.000Z\",\n              \"categoryId\": 8,\n              \"transaction_type\": \"+\",\n              \"userId\": 3,\n              \"description\": \"weekend party\"\n          }\n      ],\n      \"success\": true,\n      \"message\": \"Successfully fetched all transactions between start date and end date\",\n      \"status\": 0\n    }\n    \n     ```"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/transactions/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"transactions",
+								"5"
+							]
+						},
+						"description": "This endpoint makes an HTTP DELETE request to localhost:3001/transactions/5 to delete a specific transaction.\n\n### Request\n\nNo request parameters are required for this endpoint.\n\nIt requires a id parameter in the url.\n\n### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n\nThe response will be in JSON format with the following structure:\n\n``` json\n{\n    \"data\": true,\n    \"success\": true,\n    \"message\": \"\",\n    \"status\": 0\n}\n\n ```\n\nThe `data` key indicates the success of the deletion operation, while the `success` key also confirms the success status. The `message` key may contain additional information, and the `status` key indicates the status of the operation."
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":10000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/transactions/4",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"transactions",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Saving goals",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzY0MTU2LCJleHAiOjE3MjA4NTA1NTZ9.Sn_AJsp242Dvk6PMQppLJXb67JHU7Nw6eFwQVmdiHQg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":2000,\r\n    \"date\":\"2024-08-20T12:00:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/goals/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"goals",
+								""
+							]
+						},
+						"description": "This endpoint allows the client to create a new goal by sending a POST request to the specified URL. The request should include the amount and date of the goal in the request body.\n\n### Request Body\n\n- `amount`: (number) The amount of the goal.\n    \n- `date`: (string) The date of the goal.\n    \n\n#### Example\n\n``` json\n{\n    \"amount\":2000,\n    \"date\":\"2024-08-20T12:00:00Z\"\n}\n\n ```\n\n### Response\n\nThe endpoint returns a JSON object with the following fields:\n\n- `data`: An object containing the details of the created goal, including the goal ID, user ID, date, amount, and timestamps.\n    \n- `success`: A boolean indicating the success of the request.\n    \n- `message`: A message related to the request.\n    \n- `status`: An integer indicating the status of the request.\n    \n\n#### Example Response (201 - Created)\n\n``` json\n{\n    \"data\": {\n        \"id\": 36,\n        \"userId\": 4,\n        \"date\": \"2024-08-20T12:00:00.000Z\",\n        \"amount\": 2000,\n        \"updatedAt\": \"2024-07-12T06:01:41.499Z\",\n        \"createdAt\": \"2024-07-12T06:01:41.499Z\"\n    },\n    \"success\": true,\n    \"message\": \"Successfully created a saving goal\",\n    \"status\": 0\n}\n\n ```\n\n### Related Responses\n\nThe responses from other endpoints of this API share similar data models, with variations in the fields based on the specific endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "progress",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzI0Njg2LCJleHAiOjE3MjA4MTEwODZ9.nyJalN1c8_tkNxpEP2TDzmHAeS5BJPO6tDbgg5N05wo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\":[1,3]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/goals/progress",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"goals",
+								"progress"
+							]
+						},
+						"description": "### GET /goals/progress\n\nThis endpoint retrieves the progress of goals.\n\n#### Request\n\n- Method: GET\n    \n- URL: `localhost:3001/goals/progress`\n    \n- Body:\n    \n    ``` json\n                     {\n                    \"ids\":[1,3]\n                  }\n    \n     ```\n    \n\n#### Response\n\n- Body:\n    \n    ``` json\n             {\n        \"data\": [\n            {\n                \"goalId\": 1,\n                \"goaltimestamp\": \"2024-08-20T12:00:00.000Z\",\n                \"summary\": \"your haven't reached goal date till now and currently you have lead of 8000 amount\"\n            },\n            {\n                \"goalId\": 3,\n                \"goaltimestamp\": \"2024-08-20T12:00:00.000Z\",\n                \"summary\": \"your haven't reached goal date till now and currently you have lead of 8000 amount\"\n            }\n        ],\n        \"success\": true,\n        \"message\": \"Successfully fetched a category\",\n        \"status\": 0\n      }\n    \n     ```\n    \n\nThe response is a JSON object with the following schema:\n\nThe response data includes an array of objects, each containing `goalId`, `goaltimestamp`, and `summary` fields. The `success` field indicates the success status of the request, and the `message` field provides additional information. The `status` field represents the status of the response.\n\n#### Related Responses\n\n- The related responses from other endpoints share a similar data model, with variations in the fields based on the specific endpoint."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "get report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3R1c2VyMkBnbWFpbC5jb20iLCJpZCI6MywiaWF0IjoxNzIwNzY0MTU2LCJleHAiOjE3MjA4NTA1NTZ9.Sn_AJsp242Dvk6PMQppLJXb67JHU7Nw6eFwQVmdiHQg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"month\":7,\r\n    \"year\":2024\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/reports/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"reports",
+								""
+							]
+						},
+						"description": "# Reports API\n\nThis API endpoint makes an HTTP GET request to localhost:3001/reports/ to retrieve the monthly or yearly financial reports.\n\n### Request\n\nThe request should include the following payload in the raw request body:\n\n1. month should be 1-indexed (1-jan) and (12-dec)\n    \n\n2\\. if month = -1, generate yearly report\n\n``` json\n{\n    \"month\":7,\n    \"year\":2024\n}   \n\n ```\n\n### Response\n\n- Status: 201\n    \n- Content-Type: application/json\n    \n\nThe response will contain the financial report data in the following format:\n\n``` json\n{\n    \"data\": {\n        \"travel\": {\n            \"expense\": 0,\n            \"income\": 10000\n        },\n        \"Party\": {\n            \"expense\": 0,\n            \"income\": 10000\n        },\n        \"netsaving\": 20000\n    },\n    \"success\": true,\n    \"message\": \"Successfully generated a report\",\n    \"status\": 0\n}\n\n ```"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

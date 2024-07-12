@@ -3,6 +3,7 @@
 
 ### Assumptions -
 - Due to time constraints (college examination) I have exported the postman API collection, it can be further imported and here examiner can interact with the APIs there .
+- Import the json file Personal finance management.postman_collection.json present in root directory to Postman.
 - Documentation for the API can be found here https://documenter.getpostman.com/view/16295396/2sA3e5d7np .
 ### Database - 
 `PostgreSQL` (It is mandatory to install this on the local system. )
