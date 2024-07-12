@@ -31,7 +31,7 @@ class ReportService {
 
         }
         const transactions = await this.transactionService.getTransactionBetweenDates({userId},firstDate,lastDate);
-        console.log(transactions , "transactions");
+
         let amt = 0;
 
         const report = {};

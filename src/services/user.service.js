@@ -54,7 +54,6 @@ class UserService {
 
         // step 3 -> if password match then create a token and send it to the user 
         const newJwtToken = this.createToken({ email: user.email, id: user.id });
-        // console.log('new token is ' , newJwtToken);
         return newJwtToken;
 
     }

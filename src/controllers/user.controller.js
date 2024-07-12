@@ -25,6 +25,7 @@ const create = async (req,res,next)=>{
             occupation,
             address
         });
+
         return res.status(201).json({
             success : true , 
             message : "Successfully Created a new user" , 

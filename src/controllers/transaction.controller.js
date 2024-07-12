@@ -7,7 +7,6 @@ const create = async (req, res, next) => {
     try {
 
         const payload = req.body;
-        console.log(payload , "pyload");
         const transaction = await transactionService.createTransaction({userId:req.user.id,...payload});
 
         return res.status(201).json({

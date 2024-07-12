@@ -9,7 +9,6 @@ class CategoryService {
             userId, type
         }, { raw: true }
         );
-        console.log(response, "res");
         return response;
 
     }
@@ -28,9 +27,7 @@ class CategoryService {
 
     async getCategoryById(id) {
 
-        console.log(id);
         const response = await Category.findByPk(id, { raw: true });
-        console.log(response);
         return response;
 
     }

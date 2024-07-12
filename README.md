@@ -1,8 +1,11 @@
-<!-- Validation checks are done by sequelize and validatoin error is getting managed by error handler -->
+
 # Documentation of personalFinanceManager API
 
+### Assumptions -
+- Due to time constraints (college examination) I have exported the postman API collection, it can be further imported and here examiner can interact with the APIs there .
+- Documentation for the API can be found here https://documenter.getpostman.com/view/16295396/2sA3e5d7np .
 ### Database - 
-`PostgreSQL`
+`PostgreSQL` (It is mandatory to install this on the local system. )
 ### ORM -
 `SEQUELIZE`
 
@@ -27,11 +30,20 @@
     "database": "personalfinancemanager",
     "host": "localhost",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": <YOUR_TEST_DB_LOGIN_NAME>,
+    "password": <YOUR_TEST_DB_LOGIN_PASS>,
+    "database": "test_personalfinancemanager",
+    "host": "localhost",
+    "dialect": "postgres"
   }
+  
 }
 ```
 
 - For GUI interface PgAdmin v4 or v8 can be used.
 - Once you've added your db config as listed above, go to the src folder from your terminal and execute `npx sequelize db:create` and then execute `npm start`
+- Validation checks are done by sequelize and validatoin error is getting managed by error handler.
 
 

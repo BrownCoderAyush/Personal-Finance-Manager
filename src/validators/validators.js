@@ -12,7 +12,6 @@ const userSignUpValidator = (req,res,next)=>{
             data.phonenumber==null
         ){
             const err =  new Error("required user fields not present.");
-            console.log("here");
             next(err);
         }
     

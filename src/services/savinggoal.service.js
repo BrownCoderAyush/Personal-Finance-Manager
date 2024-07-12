@@ -17,7 +17,6 @@ class SavingGoalService {
         }, { raw: true }
         );
 
-        console.log(response, "res");
         return response;
 
     }
@@ -37,40 +36,36 @@ class SavingGoalService {
     async getGoalById(id) {
 
         const response = await SavingGoal.findByPk(id, { raw: true });
-        console.log(response, "rees");
         return response;
 
     }
 
     async getProgress(userId, goalIds) {
 
-        console.log(userId, goalIds);
         const result = [];
 
         for (const id of goalIds) {
 
             const goalDetails = await this.getGoalById(id);
-            console.log(goalDetails.createdAt, "gd");
 
             const totalNetGoalSummaryTillDate = await this.getNetSavedAmtSummary(userId, goalDetails);
 
-            console.log(totalNetGoalSummaryTillDate, "tnstd");
+       
             result.push(totalNetGoalSummaryTillDate);
 
         }
 
-        console.log(result, "result");
         return result;
     }
 
     async getNetSavedAmtSummary(userId, goalDetails) {
-        console.log(goalDetails.CreatedAt, new Date());
+
         const result = await this.transactionService.getTransactionBetweenDates({ userId }, goalDetails.createdAt, new Date());
         let amt = 0;
         let response = {};
         let summary = "";
 
-        console.log(result, "between dates");
+        
         result.forEach(transaction => {
             if (transaction.transaction_type == '-') {
                 amt -= transaction.amount;

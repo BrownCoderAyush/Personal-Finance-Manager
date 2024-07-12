@@ -7,7 +7,7 @@ class TransactionService {
         this.categoryService = new CategoryService();
     }
     async createTransaction(details) {
-        console.log(details.categoryId,"ctbt");
+
         const category = await this.categoryService.getCategoryById(details.categoryId);
 
         if (category == null) {
