@@ -1,3 +1,4 @@
+<!-- Validation checks are done by sequelize and validatoin error is getting managed by error handler -->
 # Documentation of NXTGenMentorShip API
 
 ### Database - 

@@ -57,8 +57,25 @@ const transactionCreateValidator=(req,res,next)=>{
 
 }
 
+const savingGoalCreateValidator=(req,res,next)=>{
+    try {
+        const payload = req.body;
+        if (
+            payload.date == null ||
+            payload.amount == null
+        ) {
+            throw new Error("required fields for creating saving goal doesn't exist.");
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+
+
+}
 module.exports = {
     userSignUpValidator,
     userLogInValidator,
-    transactionCreateValidator
+    transactionCreateValidator,
+    savingGoalCreateValidator
 }

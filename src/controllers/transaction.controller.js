@@ -7,10 +7,8 @@ const create = async (req, res, next) => {
     try {
 
         const payload = req.body;
-       
-        console.log(req.user.categoryId, "userid");
-
-        const transaction = await transactionService.createTransaction(payload);
+        console.log(payload , "pyload");
+        const transaction = await transactionService.createTransaction({userId:req.user.id,...payload});
 
         return res.status(201).json({
             data: transaction,
@@ -101,6 +99,8 @@ const getAllBetweenDates = async (req, res, next) => {
 
         delete filter.startDate;
         delete filter.endDate;
+
+        filter.userId = req.user.id;
         const response = await transactionService.getTransactionBetweenDates(filter, startDate, endDate);
         return res.status(200).json({
             data: response,

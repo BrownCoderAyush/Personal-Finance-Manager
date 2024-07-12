@@ -11,6 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Transaction.belongsTo(models.User,{
+        foreignKey : 'userId',
+        onDelete :'CASCADE',
+        as:'transaction_belongs_to_a_user'
+      })
+      Transaction.belongsTo(models.Category,{
+        foreignKey : 'categoryId',
+        onDelete :'CASCADE',
+        as:'transaction_belongs_to_a_category'
+      })
     }
   }
   Transaction.init({
@@ -29,6 +39,10 @@ module.exports = (sequelize, DataTypes) => {
     transaction_type: {
       type: DataTypes.ENUM('+','-'),
       allowNull: false
+    },
+    userId : {
+      type : DataTypes.INTEGER,
+      allowNull : false
     },
     description: {
       type:DataTypes.STRING

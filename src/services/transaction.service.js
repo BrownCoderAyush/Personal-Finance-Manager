@@ -7,13 +7,14 @@ class TransactionService {
         this.categoryService = new CategoryService();
     }
     async createTransaction(details) {
-
+        console.log(details.categoryId,"ctbt");
         const category = await this.categoryService.getCategoryById(details.categoryId);
 
         if (category == null) {
             throw new Error(`category with id ${details.categoryId} dosen't exist.`);
         }
         const response = await Transaction.create({
+            userId : details.userId,
             amount: details.amount,
             date: new Date(details.date),
             categoryId: details.categoryId,
@@ -59,7 +60,8 @@ class TransactionService {
                     [Op.between]: [startDate,endDate]
                 },
                 ...filter
-            }
+            },
+            raw : true        
         })
 
         return response;

@@ -4,20 +4,14 @@ const bodyParser = require('body-parser');
 const db = require('./src/models/index');
 const app = express();
 
-const {Category} = require('./src/models/index');
+
 const { PORT } = require('./src/config/serverConfig');
 const APIRoutes = require('./src/routes/index');
-const UserService = require('./src/services/user.service');
+const errorHandler = require('./src/utils/errorHandlingMiddleware');
+const ReportService = require('./src/services/report.service');
 
-const errorHandlerMiddleware = (err, req, res, next) => {
-    // Handle the error  
-    console.log(err);
-    return res.json({
-        status : 1,
-        msg : err.message,
-        error : err.stack
-    });
-};
+
+const errorHandlerMiddleware = errorHandler;
 
 const prepareAndStartServer = ()=>{
     app.use(bodyParser.json());
@@ -30,7 +24,7 @@ const prepareAndStartServer = ()=>{
 
 
     app.listen(PORT ,async ()=>{
-
+    const reportService = new ReportService();
     // const userService = new UserService();
 
     // userService.signUp({
@@ -46,6 +40,9 @@ const prepareAndStartServer = ()=>{
     //     userId:10,
     //     type:"Jewellery"
     // })
+
+    // const result = await reportService.createMonthlyReport(7,2024,);
+    // console.log(result , "report");
     console.log(`Server Started on Port : ${PORT}`);
     })
 }

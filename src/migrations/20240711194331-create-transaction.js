@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull:false
       },
+      userId : {
+        type : DataTypes.INTEGER,
+        allowNull : false
+      },
       transaction_type: {
         type: Sequelize.ENUM('+','-'),
         allowNull: false
