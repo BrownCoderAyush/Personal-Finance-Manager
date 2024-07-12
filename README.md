@@ -1,5 +1,5 @@
 <!-- Validation checks are done by sequelize and validatoin error is getting managed by error handler -->
-# Documentation of NXTGenMentorShip API
+# Documentation of personalFinanceManager API
 
 ### Database - 
 `PostgreSQL`
@@ -12,7 +12,11 @@
 - Execute `npm install` on the same path as root directory of your project
 - Create a `.env` file in the root directory of your project and add the following environment variables
   - `PORT=3001`
-  - `CLIENT_ID=<CLIENT_ID>`
+  - `DATABASE_NAME=personalfinancemanager`
+  -  `DATABASE_USERNAME=<USERNAME>`
+  - `DATABASE_PASSWORD=<PASSWORD>`
+  - `JWT_KEY=<DUMMYKEY>`
+
 - Inside the `src/config` folder create a new file `config.json` and then add the following piece of json
 
 ```
@@ -20,13 +24,14 @@
   "development": {
     "username": <YOUR_DB_LOGIN_NAME>,
     "password": <YOUR_DB_LOGIN_PASS>,
-    "database": "Online_Transation_Diary_Dev",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": "personalfinancemanager",
+    "host": "localhost",
+    "dialect": "postgres"
   }
 }
 ```
 
-- Once you've added your db config as listed above, go to the src folder from your terminal and execute `npx sequelize db:create` and then execute `npx sequelize db:migrate`
+- For GUI interface PgAdmin v4 or v8 can be used.
+- Once you've added your db config as listed above, go to the src folder from your terminal and execute `npx sequelize db:create` and then execute `npm start`
 
 
